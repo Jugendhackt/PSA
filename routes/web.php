@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\UserTimelineController;
+//use App\Http\Middleware\CorsMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

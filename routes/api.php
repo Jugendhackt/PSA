@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('twitter/timeline/{userhandle}/{amount}', "UserTimelineController@dumpTimeline");
+Route::get('twitter/timeline/{userhandle}/all',"UserTimelineController@getAllTweets");
+
+Route::get('twitter/counter/{userhandle}',"UserTimelineController@countHashtags");
