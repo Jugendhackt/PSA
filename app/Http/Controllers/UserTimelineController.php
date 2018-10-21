@@ -22,6 +22,7 @@ class UserTimelineController extends Controller
         return $statuses;
     }
 
+
     //Die Count-Funktion, die Hashtags und ihre Anzahl, Mentions und ihre Anzahl sowie die Uhrzeiten zu denen getwittert wurde, zurückliefert.
     public static function countHashtags($userhandle, $all = false)
     {

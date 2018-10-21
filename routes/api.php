@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Controller aufrufen mit $all = true;
 Route::get('twitter/counter_all/{userhandle}', "UserTimelineController@countHashtags")->defaults('all','true');
+
 Route::get('twitter/timeline/{userhandle}/{amount}', "UserTimelineController@dumpTimeline");
 Route::get('twitter/timeline_all/{userhandle}',"UserTimelineController@getAllTweets");
 

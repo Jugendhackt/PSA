@@ -1,7 +1,10 @@
 $.ajax({
   url: "https://psa1.uber.space/api/twitter/counter_all/" + window.location.search.substr(1).split('=')[1],
   type: "get",
-  success: result => statistics(result)
+  success: result => {
+    statistics(result);
+    $("a.playButton").css("animation", "none");
+  }
 });
 
 $("a.playButton").attr("href", "game?name=" + window.location.search.substr(1).split('=')[1]);
@@ -93,7 +96,7 @@ function statistics(json) {
   }
 
   var hashtagCloud = window.d3.layout.cloud()
-      .size([400, 400])
+      .size([350, 300])
       .words(hashtags.map(function(d) {
         return {text: d[0], size: d[1]};
       }))
@@ -104,7 +107,7 @@ function statistics(json) {
       .on("end", draw);
 
   var mentionCloud = window.d3.layout.cloud()
-    .size([400, 400])
+    .size([350, 300])
     .words(mentions.map(function(d, i) {
       return {text: d[0], size: d[1]};
     }))
@@ -134,4 +137,5 @@ function statistics(json) {
         })
         .text(function(d) { return d.text; });
   }
+  $(".wrapper").css("display", "grid");
 }

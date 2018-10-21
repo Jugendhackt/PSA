@@ -8,9 +8,13 @@
   {{ HTML::style('css/statistics.css') }}
 </head>
 <body>
+
     <canvas id="timeStat" height="100vh"></canvas>
 
-    <div class="wrapper"></div>
+    <div class="wrapper">
+      <h1>Hashtags</h1>
+      <h1>Mentions</h1>
+    </div>
 
     <a href="game" class="playButton"></a>
 

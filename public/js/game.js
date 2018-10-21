@@ -12,6 +12,7 @@ $.ajax({
   		maxCorrect = result.hashtag_pos.length;
   		$("span").click(event => {
 			  if (result.hashtag_pos.indexOf(parseInt(event.target.id)) >= 0 && !allClicked.includes(event.target.id)) correct++;
+
         if (allClicked.includes(event.target.id)) {
           position = allClicked.indexOf(event.target.id);
           if (~position) allClicked.splice(position, 1);

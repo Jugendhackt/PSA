@@ -1,16 +1,13 @@
 body, html {
 	width: 100vw !important;
 	height: 100vh !important;
+	overflow-x: hidden;
 	margin: 0;
-}
-
-* {
-	overflow: hidden;
 }
 
 .wrapper {
 	position: absolute;
-	display: grid;
+	display: none;
 	bottom: 0;
 	justify-content: center;
 	grid-template-columns: 1fr 1fr;
@@ -21,6 +18,11 @@ body, html {
 }
 
 .wrapper svg {
+	margin: auto;
+}
+
+.wrapper h1 {
+	font-family: Impact;
 	margin: auto;
 }
 
@@ -37,19 +39,27 @@ canvas[type=cloud] {
 .playButton {
 	position: absolute;
 	display: block;
-	left: 50%;
-	transform: translateX(-50%);
+	left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 	bottom: 25vh;
 	background-image: url(https://okfn.de/static/images/projects/AlpakaWebseite.png);
 	background-size: contain;
-  	background-position: center;
-  	background-repeat: no-repeat;
-  	width: 170px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 170px;
 	height: 170px;
 	z-index: 100;
-  	transition: all .5s ease-out;
+  transition: all .5s ease-out;
+	animation: rotate 3s linear infinite;
 }
 
 .playButton:hover {
 	bottom: 26%;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
 }
