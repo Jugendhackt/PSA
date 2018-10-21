@@ -3,9 +3,10 @@ let maxCorrect = 0;
 let allClicked = [];
 
 $.ajax({
-	url: "https://psa1.uber.space/api/twitter/random/hanneskeks",
+	url: "https://psa1.uber.space/api/twitter/random/" + window.location.search.substr(1).split('=')[1],
   	type: "get",
   	success: result => {
+			correct=0;
   		$(".tweetText").empty();
   		result.words.forEach((arr, i) => $(".tweetText").append("<span id='" + i + "'>" + result.words[i] + "</span> "))
   		maxCorrect = result.hashtag_pos.length;

@@ -11,7 +11,7 @@
 <body>
   <div class="container">
   <img src="img/logo.png" height="100" width="100" class="logo">
-    <div class="Uberschrift"><h1 class="Überschrift">Log in </h1>
+    <div class="Uberschrift"><h1 class="Überschrift">Start</h1>
     </div>
     <h3> Bitte gib einen Twitter-Account ein:</h3>
       <form action="statistics" method="get">

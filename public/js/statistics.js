@@ -1,8 +1,10 @@
 $.ajax({
-  url: "https://psa1.uber.space/api/twitter/counter/" + window.location.search.substr(1).split('=')[1],
+  url: "https://psa1.uber.space/api/twitter/counter_all/" + window.location.search.substr(1).split('=')[1],
   type: "get",
   success: result => statistics(result)
 });
+
+$("a.playButton").attr("href", "game?name=" + window.location.search.substr(1).split('=')[1]);
 
 function statistics(json) {
   const ctx = document.getElementById("timeStat").getContext('2d');
@@ -85,21 +87,51 @@ function statistics(json) {
   for (var key in json["hashtags"]) {
     hashtags.push([key, json["hashtags"][key]]);
   }
-
   var mentions = [];
   for (var key in json["mentions"]) {
     mentions.push([key, json["mentions"][key]]);
   }
 
-  const options = {
-    fontWeight: 600,
-    rotateRatio: 0,
-    weightFactor: size => Math.pow(size, 2.3) * $('canvas[type=cloud]').width() / 256
+  var hashtagCloud = window.d3.layout.cloud()
+      .size([400, 400])
+      .words(hashtags.map(function(d) {
+        return {text: d[0], size: d[1]};
+      }))
+      .padding(5)
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font("Impact")
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw);
+
+  var mentionCloud = window.d3.layout.cloud()
+    .size([400, 400])
+    .words(mentions.map(function(d, i) {
+      return {text: d[0], size: d[1]};
+    }))
+    .padding(5)
+    .rotate(function() { return ~~(Math.random() * 2) * 90; })
+    .font("Impact")
+    .fontSize(function(d) { return d.size; })
+    .on("end", draw);
+
+  hashtagCloud.start();
+  mentionCloud.start();
+
+  function draw(words) {
+    d3.select(".wrapper").append("svg")
+        .attr("width", hashtagCloud.size()[0])
+        .attr("height", hashtagCloud.size()[1])
+      .append("g")
+        .attr("transform", "translate(" + hashtagCloud.size()[0] / 2 + "," + hashtagCloud.size()[1] / 2 + ")")
+      .selectAll("text")
+        .data(words)
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .style("font-family", "Impact")
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        })
+        .text(function(d) { return d.text; });
   }
-
-  options.list = hashtags;
-  WordCloud(document.getElementById('wordCloudTags'), options);
-
-  options.list = mentions;
-  WordCloud(document.getElementById('wordCloudMentions'), options);
 }

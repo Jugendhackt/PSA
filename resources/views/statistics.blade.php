@@ -10,18 +10,13 @@
 <body>
     <canvas id="timeStat" height="100vh"></canvas>
 
-    <div class="wrapper left">
-      <canvas type="cloud" id="wordCloudTags" width="1024" height="500"></canvas>
-    </div>
-
-    <div class="wrapper right">
-      <canvas type="cloud" id="wordCloudMentions" width="1024" height="500"></canvas>
-    </div>
+    <div class="wrapper"></div>
 
     <a href="game" class="playButton"></a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.0/wordcloud2.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
     {{ HTML::script('js/statistics.js') }}
 </body>
