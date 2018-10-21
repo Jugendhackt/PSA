@@ -13,5 +13,14 @@ use App\Http\Controllers\UserTimelineController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('start');
+});
+Route::get('statistics', function () {
+    return view('statistics');
+});
+Route::get('game', function () {
+    return view('game');
+});
+Route::get('comparison', function () {
+    return view('comparison');
 });

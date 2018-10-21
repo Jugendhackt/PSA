@@ -1,0 +1,52 @@
+body, html {
+	width: 100vw !important;
+	height: 100vh !important;
+	overflow: none;
+	margin: 0;
+}
+
+.wrapper {
+	position: relative;
+	object-fit: cover;
+	width: 50vw;
+	height: 50vh;
+}
+
+.wrapper.left {
+	float: left;
+}
+
+.wrapper.right {
+	float: right;
+}
+
+
+canvas#timeStat {
+  width: 400px;
+  height: 50vh;
+}
+
+canvas[type=cloud] {
+  width: 100%;
+  height: auto;
+}
+
+.playButton {
+	position: absolute;
+	display: block;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 25vh;
+	background-image: url(https://okfn.de/static/images/projects/AlpakaWebseite.png);
+	background-size: contain;
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	width: 170px;
+	height: 170px;
+	z-index: 100;
+  	transition: all .5s ease-out;
+}
+
+.playButton:hover {
+	bottom: 26%;
+}
