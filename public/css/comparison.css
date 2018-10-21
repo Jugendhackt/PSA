@@ -1,0 +1,11 @@
+body, html {
+	width: 100vw !important;
+	height: 100vh !important;
+	overflow: none;
+	margin: 0;
+}
+
+canvas#timeStat {
+  width: 100vw;
+  height: 100vh;
+}
